@@ -1,0 +1,41 @@
+<div class="container">
+    <h1>SimpleWebAuthn Example Site</h1>
+
+    <div class="controls" *ngIf="browserSupportsWebAuthn">
+        <section id="registration">
+            <button id="btnRegBegin" (click)="registrationBegin()">
+                <strong>🚪&nbsp;Register</strong>
+            </button>
+            <p id="regSuccess" class="success">{{registrationSuccess}}</p>
+            <p id="regError" class="error">{{registrationError}}</p>
+            <details open>
+                <summary>Console</summary>
+                <textarea id="regDebug" spellcheck="false">{{registrationDebug}}</textarea>
+            </details>
+        </section>
+
+        <section id="authentication">
+            <button id="btnAuthBegin" (click)="authenticationBegin()">
+                <strong>🔐&nbsp;Authenticate</strong>
+            </button>
+            <p id="authSuccess" class="success">{{authenticationSuccess}}</p>
+            <p id="authError" class="error">{{authenticationError}}</p>
+            <details open>
+                <summary>Console</summary>
+                <textarea id="authDebug" spellcheck="false">{{authenticationDebug}}</textarea>
+            </details>
+        </section>
+
+        <section id="cleardevices">
+            <button id="btnClearDevices" (click)="clearDevices()">
+                <strong>🔐&nbsp;Clear Devices</strong>
+            </button>
+            <details open>
+                <summary>Console</summary>
+                <textarea id="clearDebug" spellcheck="false">{{clearDebug}}</textarea>
+            </details>
+        </section>
+    </div>
+
+    <p class="systemError" *ngIf="!browserSupportsWebAuthn">It seems this browser doesn't support WebAuthn...</p>
+</div>

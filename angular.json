@@ -28,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -72,7 +73,14 @@
               "browserTarget": "simplewebauthn:build:production"
             },
             "development": {
-              "browserTarget": "simplewebauthn:build:development"
+              "browserTarget": "simplewebauthn:build:development",
+              "proxyConfig": "proxy.conf.json",
+              "ssl": true,
+              "sslKey": ".ssl/server.key",
+              "sslCert": ".ssl/server.crt",
+              "port": 443,
+              "host": "10.0.0.32",
+              "disableHostCheck": true
             }
           },
           "defaultConfiguration": "development"
@@ -96,9 +104,41 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
+          }
+        }
+      }
+    },
+    "ngsimplewebauthn": {
+      "projectType": "library",
+      "root": "projects/ngsimplewebauthn",
+      "sourceRoot": "projects/ngsimplewebauthn/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngsimplewebauthn/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngsimplewebauthn/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngsimplewebauthn/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngsimplewebauthn/src/test.ts",
+            "tsConfig": "projects/ngsimplewebauthn/tsconfig.spec.json",
+            "karmaConfig": "projects/ngsimplewebauthn/karma.conf.js"
           }
         }
       }

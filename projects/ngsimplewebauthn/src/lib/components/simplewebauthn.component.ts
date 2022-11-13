@@ -27,6 +27,15 @@ export class SimpleWebAuthnComponent implements OnInit {
 
   ngOnInit(): void {
     this.browserSupportsWebAuthn = this.simpleWebAuthnService.browserSupportsWebAuthn();
+    this.autofill();
+  }
+
+  async autofill() {
+    if (await this.simpleWebAuthnService.browserSupportsAutoFill()) {
+      alert("autofill supported");
+    } else {
+      alert("no autofill")
+    }
   }
 
   clearRegistration() {

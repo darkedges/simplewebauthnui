@@ -15,9 +15,19 @@
         </section>
 
         <section id="authentication">
-            <button id="btnAuthBegin" (click)="authenticationBegin()">
-                <strong>🔐&nbsp;Authenticate</strong>
-            </button>
+            <form (submit)="$event.stopPropagation()">
+                <section id="inputUsername">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" autocomplete="username webauthn" autofocus>
+                    <br>
+                    <label for="password">Password</label>
+                    <input type="password" name="password" autocomplete="current-password webauthn">
+                    <br>
+                </section>
+                <button id="btnAuthBegin" (click)="authenticationBegin()">
+                    <strong>🔐&nbsp;Authenticate</strong>
+                </button>
+            </form>
             <p id="authSuccess" class="success">{{authenticationSuccess}}</p>
             <p id="authError" class="error">{{authenticationError}}</p>
             <details open>

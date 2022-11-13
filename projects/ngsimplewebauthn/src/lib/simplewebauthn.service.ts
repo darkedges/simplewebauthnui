@@ -22,8 +22,10 @@ export class SimpleWebAuthnService {
     this.root = this.simpleWebAuthn.settings.swa.url!;
   }
 
-  browserSupportsAutoFill(): Promise<boolean> {
-    return browserSupportsWebAuthnAutofill();
+  async browserSupportsAutoFill(): Promise<boolean> {
+    return await browserSupportsWebAuthnAutofill().then(
+      boo => { return boo; }
+    );
   }
 
   browserSupportsWebAuthn(): boolean {

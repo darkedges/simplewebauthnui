@@ -1,0 +1,26 @@
+[
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls",
+            "delegate_permission/common.get_login_creds"
+        ],
+        "target": {
+            "namespace": "web",
+            "site": "https://webauthn.connectid.darkedges.com"
+        }
+    },
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls",
+            "delegate_permission/common.get_login_creds"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "io.ionic.starter",
+            "sha256_cert_fingerprints": [
+                "C5:55:B1:C4:F8:43:F5:67:8C:46:19:18:4B:9D:72:8F:C0:15:50:DF:01:41:77:6B:17:E3:9C:74:E0:D3:1D:C3",
+                "5A:92:E6:0C:EA:19:62:A6:E0:C4:68:FD:33:75:A9:33:2F:00:E8:AE:81:3F:59:09:CC:53:2E:46:ED:AE:FE:0C"
+            ]
+        }
+    }
+]

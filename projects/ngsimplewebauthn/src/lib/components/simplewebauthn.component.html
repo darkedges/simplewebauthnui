@@ -8,7 +8,7 @@
             </button>
             <p id="regSuccess" class="success">{{registrationSuccess}}</p>
             <p id="regError" class="error">{{registrationError}}</p>
-            <details open>
+            <details false>
                 <summary>Console</summary>
                 <textarea id="regDebug" spellcheck="false">{{registrationDebug}}</textarea>
             </details>
@@ -18,19 +18,19 @@
             <form (submit)="$event.stopPropagation()">
                 <section id="inputUsername">
                     <label for="username">Username</label>
-                    <input type="text" name="username" autocomplete="username webauthn" autofocus>
+                    <input type="text" name="username" autocomplete="webauthn" autofocus>
                     <br>
                     <label for="password">Password</label>
-                    <input type="password" name="password" autocomplete="current-password webauthn">
+                    <input type="password" name="password" autocomplete="webauthn">
                     <br>
                 </section>
-                <button id="btnAuthBegin" (click)="authenticationBegin()">
+                <button type="button" id="btnAuthBegin" (click)="authenticationBegin()">
                     <strong>🔐&nbsp;Authenticate</strong>
                 </button>
             </form>
             <p id="authSuccess" class="success">{{authenticationSuccess}}</p>
             <p id="authError" class="error">{{authenticationError}}</p>
-            <details open>
+            <details false>
                 <summary>Console</summary>
                 <textarea id="authDebug" spellcheck="false">{{authenticationDebug}}</textarea>
             </details>
@@ -40,7 +40,7 @@
             <button id="btnClearDevices" (click)="clearDevices()">
                 <strong>🔐&nbsp;Clear Devices</strong>
             </button>
-            <details open>
+            <details false>
                 <summary>Console</summary>
                 <textarea id="clearDebug" spellcheck="false">{{clearDebug}}</textarea>
             </details>

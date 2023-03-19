@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { browserSupportsWebAuthn, browserSupportsWebAuthnAutofill, startAuthentication, startRegistration } from '@simplewebauthn/browser';
-import { AuthenticationCredentialJSON, PublicKeyCredentialCreationOptionsJSON, PublicKeyCredentialRequestOptionsJSON, RegistrationCredentialJSON } from '@simplewebauthn/typescript-types';
+import { AuthenticationResponseJSON, PublicKeyCredentialCreationOptionsJSON, PublicKeyCredentialRequestOptionsJSON, RegistrationResponseJSON } from '@simplewebauthn/typescript-types';
 import { Observable } from 'rxjs';
 import { SimpleWebAuthn } from './core/simplewebauthn';
 
@@ -45,10 +45,11 @@ export class SimpleWebAuthnService {
   }
 
   startAuthentication(opts: PublicKeyCredentialRequestOptionsJSON) {
+    console.log("opts: " + opts);
     return startAuthentication(opts);
   }
 
-  verifyRegistration(data: RegistrationCredentialJSON) {
+  verifyRegistration(data: RegistrationResponseJSON) {
     return this.http.post<any>(`${this.root}/verify-registration`, data, {
       headers: new HttpHeaders({
         "Content-Type": "application/json"
@@ -56,7 +57,7 @@ export class SimpleWebAuthnService {
     });
   }
 
-  verifyAuthentication(data: AuthenticationCredentialJSON) {
+  verifyAuthentication(data: AuthenticationResponseJSON) {
     return this.http.post<any>(`${this.root}/verify-authentication`, data, {
       headers: new HttpHeaders({
         "Content-Type": "application/json"

@@ -1,8 +1,8 @@
 {
     "/api": {
-        "target": "http://10.0.0.32:8080",
+        "target": "http://10.0.0.32:8000",
         "pathRewrite": {
-            "/api": "/"
+            "/api/": "/"
         }
     }
 }

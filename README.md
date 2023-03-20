@@ -1,6 +1,9 @@
-# Simplewebauthn
+# SimpleWebAuthn UI
+
+## Build
 
 ```console
+npm install
 ng serve
 ```
 

@@ -33,11 +33,18 @@ export class SimpleWebAuthnService {
   }
 
   generateAuthenticationOptions(): Observable<PublicKeyCredentialRequestOptionsJSON> {
-    return this.http.get<PublicKeyCredentialRequestOptionsJSON>(`${this.root}/generate-authentication-options`);
+    return this.http.get<PublicKeyCredentialRequestOptionsJSON>(`${this.root}/generate-authentication-options`,
+      {
+        withCredentials: true
+      });
   }
 
   generateRegistrationOptions(): Observable<PublicKeyCredentialCreationOptionsJSON> {
-    return this.http.get<PublicKeyCredentialCreationOptionsJSON>(`${this.root}/generate-registration-options`);
+    console.log(`${this.root}/generate-registration-options`)
+    return this.http.get<PublicKeyCredentialCreationOptionsJSON>(`${this.root}/generate-registration-options`,
+      {
+        withCredentials: true
+      });
   }
 
   startRegistration(opts: PublicKeyCredentialCreationOptionsJSON) {
@@ -45,12 +52,13 @@ export class SimpleWebAuthnService {
   }
 
   startAuthentication(opts: PublicKeyCredentialRequestOptionsJSON) {
-    console.log("opts: " + opts);
     return startAuthentication(opts);
   }
 
   verifyRegistration(data: RegistrationResponseJSON) {
+    console.log(`${this.root}/verify-registration`)
     return this.http.post<any>(`${this.root}/verify-registration`, data, {
+      withCredentials: true,
       headers: new HttpHeaders({
         "Content-Type": "application/json"
       })
@@ -59,6 +67,7 @@ export class SimpleWebAuthnService {
 
   verifyAuthentication(data: AuthenticationResponseJSON) {
     return this.http.post<any>(`${this.root}/verify-authentication`, data, {
+      withCredentials: true,
       headers: new HttpHeaders({
         "Content-Type": "application/json"
       })

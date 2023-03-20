@@ -40,7 +40,6 @@ export class SimpleWebAuthnService {
   }
 
   generateRegistrationOptions(): Observable<PublicKeyCredentialCreationOptionsJSON> {
-    console.log(`${this.root}/generate-registration-options`)
     return this.http.get<PublicKeyCredentialCreationOptionsJSON>(`${this.root}/generate-registration-options`,
       {
         withCredentials: true
@@ -56,7 +55,6 @@ export class SimpleWebAuthnService {
   }
 
   verifyRegistration(data: RegistrationResponseJSON) {
-    console.log(`${this.root}/verify-registration`)
     return this.http.post<any>(`${this.root}/verify-registration`, data, {
       withCredentials: true,
       headers: new HttpHeaders({
